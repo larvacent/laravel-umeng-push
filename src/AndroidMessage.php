@@ -18,16 +18,6 @@ use Larva\Supports\Exception\Exception;
 class AndroidMessage extends Message
 {
     /**
-     * 走厂商通道拉起App
-     * @param string $activity
-     */
-    public function setMiActivity($activity)
-    {
-        $this->jsonBody['mipush'] = 'true';
-        $this->jsonBody['mi_activity'] = $activity;
-    }
-
-    /**
      * 推送结果
      * @return array
      */
@@ -36,6 +26,16 @@ class AndroidMessage extends Message
         /** @var Client $push * */
         $push = UMengPush::android();
         return $push->send($this->jsonBody);
+    }
+
+    /**
+     * 走厂商通道拉起App
+     * @param string $activity
+     */
+    public function setMiActivity($activity)
+    {
+        $this->jsonBody['mipush'] = 'true';
+        $this->jsonBody['mi_activity'] = $activity;
     }
 
     /**
