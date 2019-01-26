@@ -51,12 +51,15 @@ class Client extends BaseObject
 
     /**
      * 发送
-     * @param array $data
+     * @param array|Message $message
      * @return array
      */
-    public function send($data)
+    public function send($message)
     {
-        return $this->postJSON('api/send', $data);
+        if ($message instanceof Message) {
+            $message = $message->getJsonBody();
+        }
+        return $this->postJSON('api/send', $message);
     }
 
     /**
