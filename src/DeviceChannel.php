@@ -27,7 +27,7 @@ class DeviceChannel
     {
         /** @var Message|false $message */
         if(($message = $notification->toDevice($notifiable)) != false){
-            $message->sned();
+            $message->send();
         }
     }
 }
