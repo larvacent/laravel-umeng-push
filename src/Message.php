@@ -14,9 +14,12 @@ namespace Larva\UMeng\Push;
  */
 abstract class Message
 {
+    /**
+     * @var array
+     */
     public $jsonBody = [
         'production_mode' => 'true',
-        'type' => 'broadcast'//默认广播
+        'type' => 'broadcast',//默认广播
     ];
 
     /**
