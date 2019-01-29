@@ -12,11 +12,11 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Notification;
 
 /**
- * 标准通知
+ * 广播通知
  *
  * @author Tongle Xu <xutongle@gmail.com>
  */
-class SimpleNotification extends Notification implements ShouldQueue
+class BroadcastNotification extends Notification implements ShouldQueue
 {
     use Queueable;
 
@@ -36,9 +36,9 @@ class SimpleNotification extends Notification implements ShouldQueue
     public $body;
 
     /**
-     * @var string 点对点推送
+     * @var string 广播推送
      */
-    public $notificationType = 'unicast';
+    public $notificationType = 'broadcast';
 
     /**
      * @var string 消息类型
@@ -83,7 +83,7 @@ class SimpleNotification extends Notification implements ShouldQueue
         if ($device->isAndroid()) {
             $message = new AndroidMessage();
             $message->setDeviceTokens($device->token);
-            $message->setType($this->notificationType);//点对点推送
+            $message->setType($this->notificationType);//广播推送
             $message->setPayload('display_type', $this->displayType);//通知消息
             $message->setPayloadBody('ticker', $this->ticker);// 必填，通知栏提示文字
             $message->setPayloadBody('title', $this->title);// 必填，通知标题
@@ -91,7 +91,7 @@ class SimpleNotification extends Notification implements ShouldQueue
         } else {
             $message = new IOSMessage();
             $message->setDeviceTokens($device->token);
-            $message->setType($this->notificationType);//点对点推送
+            $message->setType($this->notificationType);//广播推送
             $message->setPayload('display_type', $this->displayType);//通知消息
             $message->setAPS('alert', [
                 'title' => $this->ticker,
@@ -101,4 +101,5 @@ class SimpleNotification extends Notification implements ShouldQueue
         }
         return $message;
     }
+
 }

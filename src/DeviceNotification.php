@@ -21,6 +21,16 @@ class DeviceNotification extends Notification implements ShouldQueue
     use Queueable;
 
     /**
+     * @var string 点对点推送
+     */
+    public $notificationType = 'unicast';
+
+    /**
+     * @var string 推送类型
+     */
+    public $displayType = 'notification';
+
+    /**
      * Get the notification's delivery channels.
      *
      * @param  mixed $notifiable
@@ -50,8 +60,8 @@ class DeviceNotification extends Notification implements ShouldQueue
         if ($device->isAndroid()) {
             $android = new AndroidMessage();
             $android->setDeviceTokens($device->token);
-            $android->setType('unicast');//点对点推送
-            $android->setPayload('display_type', 'notification');//通知消息
+            $android->setType($this->notificationType);//点对点推送
+            $android->setPayload('display_type', $this->displayType);//通知消息
             $android->setPayloadBody('ticker', $message['ticker']);// 必填，通知栏提示文字
             $android->setPayloadBody('title', $message['title']);// 必填，通知标题
             $android->setPayloadBody('text', $message['text']);// 必填，通知文字描述
@@ -60,8 +70,8 @@ class DeviceNotification extends Notification implements ShouldQueue
         } else {
             $ios = new IOSMessage();
             $ios->setDeviceTokens($device->token);
-            $ios->setType('unicast');//点对点推送
-            $ios->setPayload('display_type', 'notification');//通知消息
+            $ios->setType($this->notificationType);//点对点推送
+            $ios->setPayload('display_type', $this->displayType);//通知消息
             $ios->setAPS('alert', [
                 'title' => $message['ticker'],
                 'subtitle' => $message['title'],
