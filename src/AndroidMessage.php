@@ -25,6 +25,9 @@ class AndroidMessage extends Message
     {
         /** @var Client $push * */
         $push = UMengPush::android();
+        if (!empty($push->mi_activity)) {
+            $this->setMiActivity($push->mi_activity);
+        }
         return $push->send($this->jsonBody);
     }
 

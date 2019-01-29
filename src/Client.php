@@ -31,6 +31,11 @@ class Client extends BaseObject
     public $app_master_secret;
 
     /**
+     * @var string 安卓推送时是否启用
+     */
+    public $mi_activity;
+
+    /**
      * @return string
      */
     public function getBaseUri()
