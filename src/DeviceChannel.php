@@ -1,8 +1,9 @@
 <?php
 /**
- * @copyright Copyright (c) 2018 Jinan Larva Information Technology Co., Ltd.
- * @link http://www.larvacent.com/
- * @license http://www.larvacent.com/license/
+ * This is NOT a freeware, use is subject to license terms
+ * @copyright Copyright (c) 2010-2099 Jinan Larva Information Technology Co., Ltd.
+ * @link http://www.larva.com.cn/
+ * @license http://www.larva.com.cn/license/
  */
 
 namespace Larva\UMeng\Push;
@@ -25,7 +26,7 @@ class DeviceChannel
      */
     public function send($notifiable, Notification $notification)
     {
-        /** @var Message|false $message */
+        /** @var BaseMessage|false $message */
         if(($message = $notification->toDevice($notifiable)) != false){
             $message->send();
         }

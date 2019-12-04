@@ -1,8 +1,9 @@
 <?php
 /**
- * @copyright Copyright (c) 2018 Jinan Larva Information Technology Co., Ltd.
- * @link http://www.larvacent.com/
- * @license http://www.larvacent.com/license/
+ * This is NOT a freeware, use is subject to license terms
+ * @copyright Copyright (c) 2010-2099 Jinan Larva Information Technology Co., Ltd.
+ * @link http://www.larva.com.cn/
+ * @license http://www.larva.com.cn/license/
  */
 
 namespace Larva\UMeng\Push;
@@ -72,7 +73,7 @@ class SimpleNotification extends Notification implements ShouldQueue
 
     /**
      * @param mixed $notifiable
-     * @return Message|false
+     * @return BaseMessage|false
      */
     public function toDevice($notifiable)
     {
@@ -82,15 +83,15 @@ class SimpleNotification extends Notification implements ShouldQueue
         }
         if ($device->isAndroid()) {
             $message = new AndroidMessage();
-            $message->setDeviceTokens($device->token);
+            $message->setDeviceTokens($device['token']);
             $message->setType($this->notificationType);//点对点推送
             $message->setPayload('display_type', $this->displayType);//通知消息
             $message->setPayloadBody('ticker', $this->ticker);// 必填，通知栏提示文字
             $message->setPayloadBody('title', $this->title);// 必填，通知标题
             $message->setPayloadBody('text', $this->body);// 必填，通知文字描述
         } else {
-            $message = new IOSMessage();
-            $message->setDeviceTokens($device->token);
+            $message = new IOSBaseMessage();
+            $message->setDeviceTokens($device['token']);
             $message->setType($this->notificationType);//点对点推送
             $message->setPayload('display_type', $this->displayType);//通知消息
             $message->setAPS('alert', [

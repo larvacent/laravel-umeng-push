@@ -1,8 +1,9 @@
 <?php
 /**
- * @copyright Copyright (c) 2018 Jinan Larva Information Technology Co., Ltd.
- * @link http://www.larvacent.com/
- * @license http://www.larvacent.com/license/
+ * This is NOT a freeware, use is subject to license terms
+ * @copyright Copyright (c) 2010-2099 Jinan Larva Information Technology Co., Ltd.
+ * @link http://www.larva.com.cn/
+ * @license http://www.larva.com.cn/license/
  */
 
 namespace Larva\UMeng\Push;
@@ -56,12 +57,12 @@ class Client extends BaseObject
 
     /**
      * 发送
-     * @param array|Message $message
+     * @param array|BaseMessage $message
      * @return array
      */
     public function send($message)
     {
-        if ($message instanceof Message) {
+        if ($message instanceof BaseMessage) {
             $message = $message->getJsonBody();
         }
         return $this->postJSON('api/send', $message);

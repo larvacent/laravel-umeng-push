@@ -1,21 +1,21 @@
 <?php
 /**
- * @copyright Copyright (c) 2018 Jinan Larva Information Technology Co., Ltd.
- * @link http://www.larvacent.com/
- * @license http://www.larvacent.com/license/
+ * This is NOT a freeware, use is subject to license terms
+ * @copyright Copyright (c) 2010-2099 Jinan Larva Information Technology Co., Ltd.
+ * @link http://www.larva.com.cn/
+ * @license http://www.larva.com.cn/license/
  */
 
 namespace Larva\UMeng\Push;
 
-
 use Larva\Supports\Exception\Exception;
 
 /**
- * Class AndroidMessage
+ * 安卓消息
  *
  * @author Tongle Xu <xutongle@gmail.com>
  */
-class AndroidMessage extends Message
+class AndroidMessage extends BaseMessage
 {
     /**
      * 推送结果

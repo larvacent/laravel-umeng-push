@@ -1,18 +1,19 @@
 <?php
 /**
- * @copyright Copyright (c) 2018 Jinan Larva Information Technology Co., Ltd.
- * @link http://www.larvacent.com/
- * @license http://www.larvacent.com/license/
+ * This is NOT a freeware, use is subject to license terms
+ * @copyright Copyright (c) 2010-2099 Jinan Larva Information Technology Co., Ltd.
+ * @link http://www.larva.com.cn/
+ * @license http://www.larva.com.cn/license/
  */
 
 namespace Larva\UMeng\Push;
 
 /**
- * Class Message
+ * 消息基类
  *
  * @author Tongle Xu <xutongle@gmail.com>
  */
-abstract class Message
+abstract class BaseMessage
 {
     /**
      * @var array
@@ -52,7 +53,7 @@ abstract class Message
      * 设置设备
      * @param string|array $tokens 当type=unicast时, 必填, 表示指定的单个设备
      * 当type=listcast时, 必填, 要求不超过500个, 以英文逗号分隔
-     * @return Message
+     * @return BaseMessage
      */
     public function setDeviceTokens($tokens)
     {
@@ -84,7 +85,7 @@ abstract class Message
     /**
      * 别名类型
      * @param string $type
-     * @return Message
+     * @return BaseMessage
      */
     public function setAliasType($type)
     {
@@ -95,7 +96,7 @@ abstract class Message
     /**
      * 别名
      * @param string $alias
-     * @return Message
+     * @return BaseMessage
      */
     public function setAlias($alias)
     {
@@ -105,7 +106,7 @@ abstract class Message
 
     /**
      * @param string $fileId
-     * @return Message
+     * @return BaseMessage
      */
     public function setFileId($fileId)
     {
@@ -117,7 +118,7 @@ abstract class Message
      * 设置过滤策略
      * @param string $key
      * @param string|array $value
-     * @return Message
+     * @return BaseMessage
      */
     public function setFilter($key, $value)
     {
@@ -129,7 +130,7 @@ abstract class Message
      * 设置消息载荷
      * @param string $key
      * @param string|array $value
-     * @return Message
+     * @return BaseMessage
      */
     public function setPayload($key, $value)
     {
@@ -141,7 +142,7 @@ abstract class Message
      * 设置发送策略
      * @param string $key
      * @param string|array $value
-     * @return Message
+     * @return BaseMessage
      */
     public function setPolicy($key, $value)
     {
@@ -152,7 +153,7 @@ abstract class Message
     /**
      * 发送消息描述，建议填写。
      * @param string $description 可选，发送消息描述，建议填写。
-     * @return Message
+     * @return BaseMessage
      */
     public function setDescription($description)
     {

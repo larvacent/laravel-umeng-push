@@ -1,18 +1,19 @@
 <?php
 /**
- * @copyright Copyright (c) 2018 Jinan Larva Information Technology Co., Ltd.
- * @link http://www.larvacent.com/
- * @license http://www.larvacent.com/license/
+ * This is NOT a freeware, use is subject to license terms
+ * @copyright Copyright (c) 2010-2099 Jinan Larva Information Technology Co., Ltd.
+ * @link http://www.larva.com.cn/
+ * @license http://www.larva.com.cn/license/
  */
 
 namespace Larva\UMeng\Push;
 
 /**
- * Class IOSMessage
+ * IOS消息
  *
  * @author Tongle Xu <xutongle@gmail.com>
  */
-class IOSMessage extends Message
+class IOSMessage extends BaseMessage
 {
     /**
      * 推送结果
