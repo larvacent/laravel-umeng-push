@@ -90,7 +90,7 @@ class SimpleNotification extends Notification implements ShouldQueue
             $message->setPayloadBody('title', $this->title);// 必填，通知标题
             $message->setPayloadBody('text', $this->body);// 必填，通知文字描述
         } else {
-            $message = new IOSBaseMessage();
+            $message = new IOSMessage();
             $message->setDeviceTokens($device['token']);
             $message->setType($this->notificationType);//点对点推送
             $message->setPayload('display_type', $this->displayType);//通知消息
